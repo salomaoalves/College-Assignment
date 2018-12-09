@@ -1,12 +1,25 @@
 package main
 
 import (
-	"fmt";
-	"os";
-	"bufio"
+	"fmt"
 )
 
 func main(){
+	result := maxVal(1,2,3)
+	fmt.Print("%d", result)
+
+	func maxVal(x int , y int, z int )(resultado int){
+	if(x > y && x > z){
+		resultado =  x
+	}else if(y > x && y > z){
+		resultado = y
+	}else{
+		resultado = z
+	}
+	return resultado
+	}
+ }
+	/*
 	//recebe as inf
 	inputUtilizador := bufio.NewReader(os.Stdin)
 	fmt.Print("Digite a sequencia A:")
@@ -78,4 +91,4 @@ func max(l1 int, l2 int, l3 int) int{
 			return l3
 		}
 	}
-}
+}*/
