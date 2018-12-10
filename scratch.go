@@ -3,13 +3,14 @@ package main
 //Pacotes/Bibliotecas necessários
 import (
 	"fmt"
+	"reflect"
 	"runtime"
 )
 	// Constantes adotadas
 	const (
-		gap = -1
-	//const match = 1
-	//const missmatch = -1
+		 gap = -1
+		 match = 1
+		 missmatch = -1
 	)
 
 func main() {
@@ -18,12 +19,14 @@ func main() {
 	//Coletamdo os dados / retorno multiplas variáveis
 	tamSeq1, tamSeq2, seq1, seq2  := coletaDados()
 	// Cria a matrix segundo os dados de entrada
-	matrix := criaMatrix(tamSeq1,tamSeq2)
+	matrix := criaMatrix(tamSeq1, tamSeq2)
 	//Inicializa a matrix com os valores
 	inicializaMatrix(matrix, tamSeq1, tamSeq2)
 	//Função que printa nossa matrix formatada
 	//printMatrix(matrix, seq1, seq2, tamSeq1, tamSeq2)
-	preencheMatrix(matrix, seq1, seq2,tamSeq1, tamSeq2)
+	preencheMatrix(matrix, seq1, seq2, tamSeq1, tamSeq2)
+
+	printMatrix(matrix, seq1, seq2, tamSeq1, tamSeq2)
 
 
 
@@ -97,12 +100,12 @@ func printMatrix(matrix [][]int,seq1 string ,seq2 string, tamSeq1 int, tamSeq2 i
 	}
 }
 //Calcula o topo a esquerda e a diagonal
-func calc(matrix [][]int, i int, j int, score int)(diagonal int, topo int, esquerda int){
-	diagonal = matrix[i-1][j-1] + score
+func calc(matrix [][]int, i int, j int, score int)(diag int, top int, esq int){
+	diag = matrix[i-1][j-1] + score
 
-	topo = matrix[i-1][j] + gap
+	top = matrix[i-1][j] + gap
 
-	esquerda = matrix[i][j-1] + gap
+	esq = matrix[i][j-1] + gap
 
 	return
 }
@@ -120,10 +123,27 @@ func maxVal(x int , y int, z int )(resultado int){
 }
 
 func preencheMatrix(matrix [][]int, seq1 string ,seq2 string, tamSeq1 int, tamSeq2 int){
-	for i:=0 ; i < tamSeq1; i++{
-		for j := 0; j < tamSeq2; j++{
-			if(seq1[i] == seq2[j]){
-				fmt.Printf("iguais")
+	for x:=1 ; x <= tamSeq1 ; x++{
+		for y := 1; y <= tamSeq2 ; y++{
+				//Verifica se não estora o tamanhos
+				if tamSeq1 > x  && tamSeq2 > y{
+				//Compara se as sequências são iguais
+				if(reflect.DeepEqual(seq1[x-1],seq2[y-1])){
+					fmt.Printf("Igual %c e %c\n",seq2[y-1], seq1[x-1])
+					//Se houver match o score eh 1
+					//score := match
+					//diagonal, topo, esquerda := calc(matrix, x, y, score)
+					//maX := maxVal(diagonal, topo, esquerda)
+					//matrix[x][y] = maX
+					//printMatrix(matrix, seq1, seq2, tamSeq1, tamSeq2)
+				}else{
+					fmt.Printf("~igual %c e %c\n",seq2[y-1], seq1[x-1])
+					//score := missmatch
+					//diagonal, topo, esquerda := calc(matrix, x, y, score)
+					//maX := maxVal(diagonal, topo, esquerda)
+					//matrix[x][y] = maX
+					//printMatrix(matrix, seq1, seq2, tamSeq1, tamSeq2)
+				}
 			}
 		}
 	}
