@@ -22,16 +22,10 @@ func main() {
 	matrix := criaMatrix(tamSeq1, tamSeq2)
 	//Inicializa a matrix com os valores
 	inicializaMatrix(matrix, tamSeq1, tamSeq2)
-	//Função que printa nossa matrix formatada
-	//printMatrix(matrix, seq1, seq2, tamSeq1, tamSeq2)
+	//Faz os devidos calculos e monta a matrix
 	preencheMatrix(matrix, seq1, seq2, tamSeq1, tamSeq2)
 
 	printMatrix(matrix, seq1, seq2, tamSeq1, tamSeq2)
-
-
-
-
-
 }
 func coletaDados()(tamSeq1 int,tamSeq2 int, seq_1 string, seq_2 string ){
 	var (
@@ -111,40 +105,45 @@ func calc(matrix [][]int, i int, j int, score int)(diag int, top int, esq int){
 }
 
 //Retorna o maior com entrada de 3 elementos
-func maxVal(x int , y int, z int )(resultado int){
-	if(x > y && x > z){
-		resultado =  x
-	}else if(y > x && y > z){
-		resultado = y
+func maxZ(l1 int, l2 int, l3 int) int{
+	if l1 > l2 && l1 > l3 {
+		return l1
 	}else{
-		resultado = z
+		if l2 > l3{
+			return l2
+		}else{
+			return l3
+		}
 	}
-	return
 }
 
 func preencheMatrix(matrix [][]int, seq1 string ,seq2 string, tamSeq1 int, tamSeq2 int){
-	for x:=1 ; x <= tamSeq1 ; x++{
-		for y := 1; y <= tamSeq2 ; y++{
+
+	for x:=1 ; x < tamSeq2 ; x++{
+		for y := 1; y < tamSeq1 ; y++{
 				//Verifica se não estora o tamanhos
-				if tamSeq1 > x  && tamSeq2 > y{
+				if tamSeq1 + 1 > x  && tamSeq2 + 1  > y{
 				//Compara se as sequências são iguais
-				if(reflect.DeepEqual(seq1[x-1],seq2[y-1])){
-					fmt.Printf("Igual %c e %c\n",seq2[y-1], seq1[x-1])
+				if(reflect.DeepEqual(seq2[x-1],seq1[y-1])){
+					//fmt.Printf("Igual %c e %c\n",seq2[x-1], seq1[y-1])
 					//Se houver match o score eh 1
-					//score := match
-					//diagonal, topo, esquerda := calc(matrix, x, y, score)
-					//maX := maxVal(diagonal, topo, esquerda)
-					//matrix[x][y] = maX
-					//printMatrix(matrix, seq1, seq2, tamSeq1, tamSeq2)
+					score := match
+					diagonal, topo, esquerda := calc(matrix, x, y, score)
+					maX := maxZ(diagonal, topo, esquerda)
+					matrix[x][y] = maX
 				}else{
-					fmt.Printf("~igual %c e %c\n",seq2[y-1], seq1[x-1])
-					//score := missmatch
-					//diagonal, topo, esquerda := calc(matrix, x, y, score)
-					//maX := maxVal(diagonal, topo, esquerda)
-					//matrix[x][y] = maX
-					//printMatrix(matrix, seq1, seq2, tamSeq1, tamSeq2)
+					//fmt.Printf("~igual %c e %c\n",seq2[x-1], seq1[y-1])
+					score := missmatch
+					diagonal, topo, esquerda := calc(matrix, x, y, score)
+					maX := maxZ(diagonal, topo, esquerda)
+					matrix[x][y] = maX
 				}
 			}
 		}
 	}
+}
+
+func verificaMatch(seq1 string, seq2 string, x int,y int)(resultado bool){
+
+	return
 }
