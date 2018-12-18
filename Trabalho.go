@@ -20,15 +20,16 @@ const (
 func main() {
 	//Usar quantos processadores estiverem disponíveis
 	runtime.GOMAXPROCS(runtime.NumCPU())
-	//Coletamdo os dados / retorno multiplas variáveis
 
+	//Coletamdo os dados / retorno multiplas variáveis (TIRAR COMENTÁRIO PARA PARA FAZER O ALINHAMENTO SEM ARQUIVOS)
 	//tamSeq1, tamSeq2, seq1, seq2  := coletaDados()
-	
-	//Coletando os dados de um arq
+
+	//ALINHAMENTO USANDO ARQUIVOS
+	//Coletando os dados de um arquivo
 	tamSeq1, seq1 := leArq1()
 	tamSeq2, seq2 := leArq2()
 
-	// Cria a matrix segundo os dados de entrada
+	// Cria a matriz segundo os dados de entrada
 	matrix := criaMatrix(tamSeq1, tamSeq2)
 	
 	//Inicializa a matrix com os valores
@@ -37,20 +38,21 @@ func main() {
 	//Faz os devidos calculos e monta a matrix
 	preencheMatrix(matrix, seq1, seq2, tamSeq1, tamSeq2)
 	
-	//Vizualização da matrix
+	//Vizualização da matriz esparça (TIRAR COMENTÁRIO PARA PARA VIZUALIZAR)
 	//printMatrix(matrix, seq1, seq2, tamSeq1, tamSeq2)
 
 	//Realiza o calculo do caminho e chama a função para escrever no arq
 	traceback(matrix, seq1, seq2, tamSeq1, tamSeq2)
 	
-	//retorna score da sequência
+	//retorna score do alinhamento
 	fmt.Printf("Score do alinhamento é: %d\n",matrix[tamSeq2-1][tamSeq1-1])
 }
 
+//possibilita a leitura do primeiro arquivo
 func leArq1()(tamSeq1 int, seq_1 string){
 	sequencia_1 := ""
 
-	//possibilita a leitura do arquivo
+	//Mudar o nome conforme o nome do primeiro arquivo
 	var caminho = "file3.txt"
 	arq,erro := os.Open(caminho)
 	if erro != nil{
@@ -85,10 +87,11 @@ func leArq2()(tamSeq2 int, seq_2 string){
 	sequencia_2 := ""
 
 	//possibilita a leitura do arquivo
+	//Mudar o nome conforme o nome do primeiro arquivo
 	var caminho = "file4.txt"
 	arq,erro := os.Open(caminho)
 	if erro != nil{
-		fmt.Println("Algo de errado com o arquivo.")
+		fmt.Println("Atenção, Algo de errado com o arquivo.")
 		return
 	}
 	//assim q o programa acabar, ele fecha
@@ -115,6 +118,7 @@ func leArq2()(tamSeq2 int, seq_2 string){
 	return
 }
 
+//Função para coletar dados das sequencias via console// Você pode optar por usar arquivos
 func coletaDados()(tamSeq1 int,tamSeq2 int, seq_1 string, seq_2 string ){
 	var (
 		sequencia_1 string;
@@ -126,7 +130,7 @@ func coletaDados()(tamSeq1 int,tamSeq2 int, seq_1 string, seq_2 string ){
 	fmt.Print("Digite a Sequencia B: ")
 	fmt.Scan(&sequencia_2)
 
-	//Obtendo tamanho da string
+	//Obtendo tamanho das sequencias
 	tamSeq1 = len(sequencia_1) + 1
 	tamSeq2 = len(sequencia_2) + 1
 	seq_1 = strings.ToUpper(sequencia_1)
@@ -159,6 +163,7 @@ func inicializaMatrix(matrix[][]int, tamSeq1 int, tamSeq2 int){
 	}
 }
 
+//função que imprime a matriz
 func printMatrix(matrix [][]int,seq1 string ,seq2 string, tamSeq1 int, tamSeq2 int){
 
 	sequencia_1 := "-"
@@ -315,5 +320,4 @@ func escreveArq(conteudo []string) error {
 		fmt.Fprintln(escritor, linha)
 	}
 	return escritor.Flush()
-
 }
