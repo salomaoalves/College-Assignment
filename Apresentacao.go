@@ -64,6 +64,11 @@ NOME := [] type {ELEMENTOS}
 //ARRAYS MULTIDIMENSIONAIS
 var NOME = [n_l][n_c] type {ELEMENTOS}
 
+NOME := make([][]TYPE, SIZE1)
+for i := 0; i < SIZE1 ; i++ {
+NOME[i] = make([]TYPE, SIZE2)
+}
+
 //STRUCT
 type estrutura struct{
 	ATRIBUTOS //ex: id int

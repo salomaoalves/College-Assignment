@@ -20,8 +20,8 @@ const (
 func main() {
 	//Usar quantos processadores estiverem disponíveis
 	runtime.GOMAXPROCS(runtime.NumCPU())
-
 	//Coletamdo os dados / retorno multiplas variáveis
+
 	//tamSeq1, tamSeq2, seq1, seq2  := coletaDados()
 	
 	//Coletando os dados de um arq
@@ -51,7 +51,7 @@ func leArq1()(tamSeq1 int, seq_1 string){
 	sequencia_1 := ""
 
 	//possibilita a leitura do arquivo
-	var caminho = "Sequencia1.txt"
+	var caminho = "file3.txt"
 	arq,erro := os.Open(caminho)
 	if erro != nil{
 		fmt.Println("Algo de errado com o arquivo.")
@@ -85,7 +85,7 @@ func leArq2()(tamSeq2 int, seq_2 string){
 	sequencia_2 := ""
 
 	//possibilita a leitura do arquivo
-	var caminho = "Sequencia2.txt"
+	var caminho = "file4.txt"
 	arq,erro := os.Open(caminho)
 	if erro != nil{
 		fmt.Println("Algo de errado com o arquivo.")
