@@ -1,0 +1,1 @@
+Para o KMeans com 2clusters, a silhueta simplificada é: 0.17958671250983416

@@ -1,0 +1,4 @@
+programa main {
+int abacate
+abacate := 15.586
+}

@@ -1,0 +1,1 @@
+Para o KMeans com 3clusters, a silhueta simplificada é: 0.19446022799498697

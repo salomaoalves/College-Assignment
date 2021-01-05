@@ -1,0 +1,19 @@
+programa main {
+    [* fask f aslf s ff .*]
+    int abacate, count
+    char a
+    real o2
+    count := 10
+    abacate := 15.586
+    se ( abacate > 15 ) entao {
+        enquanto ( count <> 0) {
+            faca {
+                count := count - 1
+            } enquanto ( count < 10 )
+        }
+    } senao {
+        se ( count == 1) entao {
+            count := 0
+        }
+    }
+}

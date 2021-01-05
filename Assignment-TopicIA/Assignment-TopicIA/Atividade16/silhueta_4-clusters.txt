@@ -1,0 +1,1 @@
+Para o KMeans com 4clusters, a silhueta simplificada é: 0.0631499036237
