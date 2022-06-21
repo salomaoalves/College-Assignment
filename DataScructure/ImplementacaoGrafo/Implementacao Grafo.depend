@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1537450349 source:c:\users\samsung\desktop\implementacao grafo\main.c
+	<stdio.h>
+	<stdlib.h>
+	"MatAdj.h"
+	"MatInc.h"
+
+1537450404 source:c:\users\samsung\desktop\implementacao grafo\matadj.c
+	<stdio.h>
+	<stdlib.h>
+	"MatAdj.h"
+
+1537450349 source:c:\users\samsung\desktop\implementacao grafo\matinc.c
+	<stdio.h>
+	<stdlib.h>
+	"MatInc.h"
+
+1537450404 c:\users\samsung\desktop\implementacao grafo\matadj.h
+
+1537449135 c:\users\samsung\desktop\implementacao grafo\matinc.h
+
